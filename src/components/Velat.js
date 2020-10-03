@@ -119,8 +119,8 @@ const Velka = (props) => {
                 <div class="lista">
                     Uusimmat 10 velkaa:
                 {filtteröidytVelat.reverse().slice(0, 10).map((velka) =>
-                    <div key={velka._id} class="velka"> Velallinen: {velka.velallinen} <br /> Määrä: {velka.määrä} <br />
-                        <button type="submit" value="Submit" onClick={() => poistaVelka(velka)}>Poista</button>
+                    <div key={velka._id} class="velka"> Velallinen: {velka.velallinen} <br /> Määrä: {velka.määrä}
+                        <button class="poista-button" type="submit" value="Submit" onClick={() => poistaVelka(velka)}>Poista</button>
                     </div>
                 )}
                 </div>

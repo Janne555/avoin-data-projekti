@@ -35,6 +35,8 @@ grid-column: 2;
 }
 
 .velka {
+    display: grid;
+    grid-template-columns: 1fr 0.2fr;
     outline-style: solid;
     outline-color: black;
     outline-width: 1px;
@@ -53,4 +55,12 @@ grid-column: 2;
 .velkaa-yht {
     grid-row: 2;
     grid-column: 1 /span 3;
+}
+
+.velka-teksti {
+    grid-column: 1;
+}
+
+.poista-button {
+    grid-column: 2;
 }
