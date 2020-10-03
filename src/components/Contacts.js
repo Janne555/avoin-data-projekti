@@ -2,7 +2,7 @@
 // eslint-disable-next-line
 import React, { Component } from 'react';
 import axios from "axios";
-import './Contacts.css';
+import '../css/Contacts.css';
 
 class Contacts extends Component {
     state = {
@@ -42,14 +42,14 @@ class Contacts extends Component {
             osoite: this.state.osoite
         };
         axios
-          .post("http://localhost:3000/contacts", data)
+          .post("http://localhost:4000/contacts", data)
           .then(res => console.log(res))
           .catch(err => console.log(err));
       };
     
 
       componentDidMount() {
-        axios.get("http://localhost:3000/contacts")
+        axios.get("http://localhost:4000/contacts")
           .then(res => {
             const names = res.data;
             const pnumerot = res.data;
@@ -59,6 +59,7 @@ class Contacts extends Component {
             this.setState({ osoiteet });
           })
       }
+
 
 
       render() {

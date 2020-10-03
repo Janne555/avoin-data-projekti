@@ -1,0 +1,17 @@
+.navbar {
+    padding: 25px;
+    outline-style: dashed;
+    outline-color: dimgray;
+    background-color: black;
+    color: white;
+}
+
+.navbaritem {
+    padding: 10px;
+    font-size: 200%;
+    color: white;
+}
+
+.navbaritem:hover {
+    background-color: rgb(50, 50, 50);
+}

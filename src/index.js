@@ -2,13 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Contacts from './Contacts';
 import * as serviceWorker from './serviceWorker';
+import { QueryCache, ReactQueryCacheProvider } from 'react-query'
+
+const queryCache = new QueryCache()
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <Contacts />
-    <App />
+    <ReactQueryCacheProvider queryCache={queryCache}>
+      <App />
+    </ReactQueryCacheProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

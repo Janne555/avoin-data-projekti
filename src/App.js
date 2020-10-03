@@ -1,6 +1,19 @@
 import React, { useEffect } from 'react';
-import logo from './logo.svg';
+import Contacts from './components/Contacts';
+import Velat from "./components/Velat"
+import Todos from "./components/Todos"
+import Resepti from "./components/Resepti"
+import Navbar from "./components/Navbar"
 import './App.css';
+import "./css/main.css"
+import "./css/todos.css"
+
+
+import {
+  BrowserRouter as Router,
+  Switch, Route, Link
+} from 'react-router-dom'
+
 
 function App() {
   useEffect(() => {
@@ -8,21 +21,38 @@ function App() {
   })
   
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" >
+      <Router>
+        <Navbar />
+
+        <Switch>
+
+          <Route path="/contacts">
+            <Contacts />
+          </Route>
+
+          <Route path="/todos">
+            <Todos />
+          </Route>
+
+          <Route path="/reseptit">
+            <Resepti />
+          </Route>
+
+          <Route path="/velat">
+          <Velat />
+          </Route>
+
+          <Route path="/">
+            <div>
+              <h1>
+                Home
+              </h1>
+            </div>
+          </Route>
+
+        </Switch>
+      </Router>
     </div>
   );
 }

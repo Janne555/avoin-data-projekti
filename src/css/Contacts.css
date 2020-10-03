@@ -1,5 +1,5 @@
 .contacts-main{
-    float: left;
+    display: inline-block;
     border: 2px solid #AC9675;
     width: 50%;
     height: 50%;
@@ -8,9 +8,12 @@
     margin-left: 2em;
     border-radius: 1em;
     padding: 1em;
+    
 }
 .posti{
-  float: left;
+  
+  text-align: left;
+  display: inline-block;
   width: 40%;
 }
 
