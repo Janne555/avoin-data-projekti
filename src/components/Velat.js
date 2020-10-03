@@ -101,7 +101,7 @@ const Velka = (props) => {
         <div class="velat-main">
             <div class="velka-inner">
                 <h1 class="otsikko">Velat</h1>
-                <span class="velkaa-yht">Velkaa karhuamatta: {velkaYhteensä}</span>
+                <span class="velkaa-yht">Velkaa karhuamatta: {velkaYhteensä} €</span>
                 <div class="velka-input">
                     <h2>Haku</h2>
             Velallinen: <input type="text" value={velkaFiltteri} onChange={haeVelka} />
@@ -119,7 +119,7 @@ const Velka = (props) => {
                 <div class="lista">
                     Uusimmat 10 velkaa:
                 {filtteröidytVelat.reverse().slice(0, 10).map((velka) =>
-                    <div key={velka._id} class="velka"> Velallinen: {velka.velallinen} <br /> Määrä: {velka.määrä}
+                    <div key={velka._id} class="velka"> Velallinen: {velka.velallinen} <br /> Määrä: {velka.määrä} €
                         <button class="poista-button" type="submit" value="Submit" onClick={() => poistaVelka(velka)}>Poista</button>
                     </div>
                 )}
