@@ -1,0 +1,56 @@
+.velat-main{
+  display: grid;
+  grid-template-columns: 10% auto 10%;
+  grid-template-rows: 5em auto;
+}
+
+.velka-inner {
+grid-column: 2;
+  grid-row: 2;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1em;
+  border: 2px solid #AC9675;
+  border-radius: 1em;
+  background-color: #F7F5EE;
+  
+}
+
+.velka-input {
+    grid-column: 1;
+    grid-row: 3;
+    display: flex;
+  flex-direction: column;
+}
+
+.velka-input form {
+    display: flex;
+  flex-direction: column;
+}
+
+.lista {
+    grid-row: 3;
+    grid-column: 2 /span 3;
+}
+
+.velka {
+    outline-style: solid;
+    outline-color: black;
+    outline-width: 1px;
+    word-wrap: anywhere;
+    padding: 5px;
+    margin: 5px;
+    background-color: #faf9f6;
+}
+
+.otsikko {
+    grid-row: 1;
+    grid-column: 1 /span 3;
+}
+
+
+.velkaa-yht {
+    grid-row: 2;
+    grid-column: 1 /span 3;
+}

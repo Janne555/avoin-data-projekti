@@ -38,7 +38,7 @@ class Contacts extends Component {
         e.preventDefault();
         const data = {
             name: this.state.name,
-            pnumero: this.state.pnumero,
+            pnumero: Number(this.state.pnumero),
             osoite: this.state.osoite
         };
         axios
@@ -74,44 +74,45 @@ class Contacts extends Component {
   <div>
   <label>
     Nimi:
-    <input className="kentta" placeholder="Title" type="text" value={this.state.name}
+    <input className="kentta" placeholder="Nimi" type="text" value={this.state.name}
             onChange={this.onNameChange} required />
   </label>
   </div> 
     <div>
   <label>
     puhelin:
-    <input className="kentta" type="number" value={this.state.pnumero}
+    <input className="kentta" type= "number" placeholder="Puhelinnumero" value={this.state.pnumero}
             onChange={this.onPnumeroChange} required />
   </label>
     </div> 
   <div>
   <label>
     Osoite:
-    <input className="kentta" type="text" value={this.state.osoite}
+    <input className="kentta" type="text"  placeholder="Osoite" value={this.state.osoite}
             onChange={this.onOsoiteChange} required />
   </label>
-  </div> 
-  <input className="submitti" type="submit" value="Submit" />
+  </div>
+  <button onClick={() => window.location.reload(false)} className="submitti" type="submit" value="Submit"> Lisää</button>
 </form>
 </div>
 
 
 <div className="getti">
-<table>
+<table className="taulu">
+<thead>
 <tr>
     <th>Nimi</th>
     <th>Numero</th> 
     <th>Osoite</th>
 </tr>
-
-
+</thead>
+<tbody>
 <tr>
   <td>    { this.state.names.map(name => <p className="taulukko">{name.name}</p>)} </td>
   <td>    { this.state.pnumerot.map(pnumero => <p className="taulukko">{pnumero.pnumero}</p>)} </td>
   <td>    { this.state.osoiteet.map(osoite => <p className="taulukko">{osoite.osoite}</p>)} </td>
 </tr>
-
+</tbody>
       </table>
 </div>
 

@@ -3,18 +3,25 @@ import { useQuery, useMutation, useQueryCache } from 'react-query'
 import axios from "axios";
 
 const getTodos = async () => {
-  const res = await axios.get("http://localhost:4000/todo")
+  const res = await axios.get("http://localhost:4000/todo", {
+    headers: {
+      Authorization: `Bearer ${window.sessionStorage.getItem("id_token")}`
+    }
+  })
   return res.data
 }
 
-// [123, 32, 312].reduce((previous, current, index, list) => {
-//   previous += current
-//   return previous
-// }, 0, muuttuja)
+const postTodo = async (name) => axios.post("http://localhost:4000/todo", { name, done: false }, {
+  headers: {
+    Authorization: `Bearer ${window.sessionStorage.getItem("id_token")}`
+  }
+})
 
-const postTodo = async (name) => axios.post("http://localhost:4000/todo", { name, done: false })
-
-const putTodo = async ({ done, id }) => axios.put("http://localhost:4000/todo", { id, done })
+const putTodo = async ({ done, id }) => axios.put("http://localhost:4000/todo", { id, done }, {
+  headers: {
+    Authorization: `Bearer ${window.sessionStorage.getItem("id_token")}`
+  }
+})
 
 const Todos = () => {
   const [mode, setMode] = useState("all")
@@ -49,32 +56,34 @@ const Todos = () => {
   }
 
   return (
-    <div className="todos">
-      {todosQuery.isLoading && <span>lataa</span>}
-      <div>
-        <label htmlFor="undone-radio">Show undone</label>
-        <input onChange={() => setMode("undone")} type="radio" name="filter" value="undone" checked={mode === "undone"} />
-        <label htmlFor="all-radio">Show all</label>
-        <input onChange={() => setMode("all")} type="radio" name="filter" value="all" checked={mode === "all"} />
-      </div>
-
-      <ul>
-        {todos.map(todo => (
-          <li key={todo._id}>
-            <span>{todo.name}</span>
-            <button disabled={updateTodoMutation.isLoading} onClick={() => updateTodo({ done: !todo.done, id: todo._id })} >{todo.done ? "done" : "not done"}</button>
-          </li>
-        ))}
-      </ul>
-
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>name</label>
-          <input name="name" required />
+    <div className="todos-wrapper">
+      <div className="todos">
+        <h2>Todo</h2>
+        <div className="todo-form">
+          <form onSubmit={handleSubmit}>
+            <label>name</label>
+            <input placeholder="type name here" name="name" required />
+            <button disabled={todosMutation.isLoading}>Save</button>
+          </form>
+          {todosMutation.isError && <span>Tallentaminen epäonnistui</span>}
         </div>
-        <button>Save</button>
-      </form>
-      {todosMutation.isError && <span>Failed to save todo</span>}
+        <div className="todo-list">
+          {todosQuery.isLoading && <span>lataa</span>}
+          <label htmlFor="undone-radio">Näytä tekemättömät</label>
+          <input onChange={() => setMode("undone")} type="radio" name="filter" value="undone" checked={mode === "undone"} />
+          <label htmlFor="all-radio">Näytä kaikki</label>
+          <input onChange={() => setMode("all")} type="radio" name="filter" value="all" checked={mode === "all"} />
+
+          <ul>
+            {todos.map(todo => (
+              <li key={todo._id}>
+                <span data-done={todo.done}>{todo.name}</span>
+                <button disabled={updateTodoMutation.isLoading} onClick={() => updateTodo({ done: !todo.done, id: todo._id })} >{todo.done ? "done" : "not done"}</button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   )
 }

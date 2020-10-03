@@ -3,6 +3,8 @@
     border: 2px solid #AC9675;
     width: 50%;
     height: 50%;
+    max-width: 60em;
+    min-width: 35em;
     background-color: #F7F5EE;
     margin-top: 2em;
     margin-left: 2em;
@@ -11,25 +13,30 @@
     
 }
 .posti{
-  
   text-align: left;
   display: inline-block;
-  width: 40%;
+  width: 30%;
+}
+
+.taulu{
+  display: inline-block;
+  text-align: left;
+  width: 100%;
+  overflow-y: auto;
+  height: 30em;
 }
 
 .getti{
-  overflow: auto;
+  display: inline-block;
   float: right;
-  width: 50%;
   margin-right: 0.5em;
-  height: 80%;
 }
 
-tr:nth-child(even) {
+tbody:nth-child(even) {
   background: white}
 
 
-tr:nth-child(odd) {
+  tbody:nth-child(odd) {
   background: rgb(228, 197, 197)}
 
 
@@ -45,7 +52,7 @@ tr:nth-child(odd) {
 .submitti{
     background-color: #4CAF50; /* Green */
     border: none;
-    color: rgb(255, 255, 255);
+    color: black;
     padding: 15px 32px;
   margin-top: 0.5em;
     text-align: center;
@@ -55,7 +62,9 @@ tr:nth-child(odd) {
 }
 
 .taulukko{
-  border: 2px solid #AC9675;
+  border-bottom: 1px solid #ddd;
   text-align: center;
-  height: 20px;
+  height:30px;
+  max-width: 10em;
+  word-wrap: anywhere;
 }

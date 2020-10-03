@@ -1,0 +1,29 @@
+.resepti-main{
+    border: 2px solid #AC9675;
+    background-color: #F7F5EE;
+    border-radius: 1em;
+    padding: 10px;
+    width: 50%;
+    margin: auto;
+    margin-top: 100px;
+    overflow: auto;
+}
+
+.one {
+  height: 300px;
+  float: left;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.two {
+  height: 300px;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 1px;
+}
+
+.input {
+    width:100%;
+    box-sizing: border-box;
+}

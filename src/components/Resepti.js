@@ -1,5 +1,6 @@
 import React, { Component, useState, useEffect } from 'react';
 import axios from "axios";
+import "../css/resepti.css"
 
 const Resepti = (props) =>{
 
@@ -31,39 +32,37 @@ const Resepti = (props) =>{
             .then(response => {
                 setResepti(response.data);
             })
+            .catch(console.error)
     }, []
     )
 
     return(
-        <div>
+        <div className="resepti-main">
+            <h1>Reseptit</h1>
+            <div className="one">
+            <h3>Lisää resepti:</h3>
             <form onSubmit={lisääResepti}>
-                <label>
-                    Nimi:
-                    <input type="text" name="nimi" requiered />
-                </label>
+                <label>Nimi:</label>
+                <input type="text" name="nimi" requiered />
                 <br />
-                <label>
-                    Ainekset:
-                    <input type="text" name="ainekset" requiered />
-                </label>
+                <label>Ainekset:</label>
+                <input type="text" name="ainekset" requiered />
                 <br />
-                <label>
-                    Valmistus aika:
-                    <input type="number" name="aika" requiered />
-                </label>
+                <label>Valmistus aika:</label>
+                <input type="number" name="aika" requiered />
                 <br />
-                <label>
-                    Ohje:
-                    <input type="text" name="ohje" requiered />
-                </label>
+                <label>Ohje:</label>
+                <input type="text" name="ohje" requiered />
                 <br />
-                <label>
-                    Vaikeustaso:
-                    <input type="number" name="vaikeustaso" requiered />
-                </label>
+                <label>Vaikeustaso:</label>
+                <input type="number" min="1" max="5" name="vaikeustaso" requiered />
                 <br />
                 <input type="submit" value="Lisää" />
             </form>
+            </div>
+            <div className="two">
+                <h3>Lisätyt reseptit:</h3>
+            </div>
         </div>
     )
 }

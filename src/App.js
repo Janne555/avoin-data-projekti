@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Contacts from './components/Contacts';
 import Velat from "./components/Velat"
 import Todos from "./components/Todos"
@@ -16,14 +16,12 @@ import {
 
 
 function App() {
-  useEffect(() => {
-    fetch("/foo", )
-  })
-  
+  const [loggedIn, setLoggedIn] = useState(false)
+
   return (
     <div className="App" >
       <Router>
-        <Navbar />
+        <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
 
         <Switch>
 
@@ -32,7 +30,10 @@ function App() {
           </Route>
 
           <Route path="/todos">
-            <Todos />
+            {loggedIn
+              ? <Todos />
+              : <div>kirjaudu ensin sisään</div>
+            }
           </Route>
 
           <Route path="/reseptit">
@@ -40,14 +41,14 @@ function App() {
           </Route>
 
           <Route path="/velat">
-          <Velat />
+            <Velat />
           </Route>
 
           <Route path="/">
             <div>
               <h1>
                 Home
-              </h1>
+            </h1>
             </div>
           </Route>
 
