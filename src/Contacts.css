@@ -1,0 +1,58 @@
+.contacts-main{
+    float: left;
+    border: 2px solid #AC9675;
+    width: 50%;
+    height: 50%;
+    background-color: #F7F5EE;
+    margin-top: 2em;
+    margin-left: 2em;
+    border-radius: 1em;
+    padding: 1em;
+}
+.posti{
+  float: left;
+  width: 40%;
+}
+
+.getti{
+  overflow: auto;
+  float: right;
+  width: 50%;
+  margin-right: 0.5em;
+  height: 80%;
+}
+
+tr:nth-child(even) {
+  background: white}
+
+
+tr:nth-child(odd) {
+  background: rgb(228, 197, 197)}
+
+
+.kentta{
+  margin-left: 0em;
+  display: block;
+}
+
+.otsake{
+  text-align: center;
+}
+
+.submitti{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: rgb(255, 255, 255);
+    padding: 15px 32px;
+  margin-top: 0.5em;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+}
+
+.taulukko{
+  border: 2px solid #AC9675;
+  text-align: center;
+  height: 20px;
+}

@@ -9,9 +9,10 @@ db.once('open', function() {
   console.log("mongo connection open")
 });
 
-const ContactsSchema = new mongoose.Schema({
+const contactsSchema = new mongoose.Schema({
   name: String,
   pnumero: Number,
+  osoite: String,
 })
 
 const todoSchema = new mongoose.Schema({
@@ -24,6 +25,8 @@ const velkaSchema = new mongoose.Schema({
   määrä: Number,
   maksettu: Boolean
 })
+
+const Contacts = mongoose.model('Contacts', contactsSchema)
 
 const Todo = mongoose.model('Todo', todoSchema)
 
@@ -48,10 +51,39 @@ app.post("/foo", (req, res) => {
   res.end()
 })
 
+
+app.post("/contacts", async (req, res) => {
+  if (!("name" in req.body)) return res.status(400).send("Missing name")
+  if (!("pnumero" in req.body)) return res.status(400).send("Missing pnumero")
+  if (!("osoite" in req.body)) return res.status(400).send("Missing osoite")
+  if (typeof req.body.name !== "string") return res.status(400).send("name must be string")
+  if (typeof req.body.osoite !== "string") return res.status(400).send("done must be string")
+  const contacts = new Contacts({name: req.body.name, pnumero: req.body.pnumero, osoite: req.body.osoite})
+  try {
+    await contacts.save()
+    res.json(await contacts.find({}))
+  } catch (error) {
+    console.error(error)
+    res.status(500).send("failed to save")
+  }
+})
+
+app.get("/contacts", async (req, res) => {
+  try {
+    res.json(await Contacts.find({}))
+  } catch (error) {
+    console.error(error)
+    res.status(500).send("failed to get contacts")
+  }
+})
+
+
+
 app.post("/todo", async (req, res) => {
   if (!("name" in req.body)) return res.status(400).send("Missing name")
   if (!("done" in req.body)) return res.status(400).send("Missing done")
   if (typeof req.body.name !== "string") return res.status(400).send("name must be string")
+  if (typeof req.body.name !== "number") return res.status(400).send("name must be number")
   if (typeof req.body.done !== "boolean") return res.status(400).send("done must be boolean")
   const todo = new Todo({name: req.body.name, done: req.body.done})
   try {
@@ -65,7 +97,8 @@ app.post("/todo", async (req, res) => {
 
 
 // Example:
-// curl -X POST -d '{"name": "test", "done": true}' -H "Content-type: application/json"  localhost:4000/todo
+// curl -X POST -d '{"name": "test2", "done": true}' -H "Content-type: application/json"  localhost:4000/todo
+// curl -X POST -d '{"name": "test2", "pnumero": 324534534, "osoite": "makkyla"}' -H "Content-type: application/json"  localhost:4000/contacts
 
 app.get("/todo", async (req, res) => {
   try {
