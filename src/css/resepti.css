@@ -3,27 +3,84 @@
     background-color: #F7F5EE;
     border-radius: 1em;
     padding: 10px;
-    width: 50%;
+    width: 1000px;
+    height: 500px;
     margin: auto;
     margin-top: 100px;
     overflow: auto;
 }
 
+.listaResepti{
+  border: 2px solid #AC9675;
+  background-color: white;
+  border-radius: 1em;
+  padding: 10px;
+  width: 300px;
+  overflow: auto;
+  align-content: center;
+}
+
 .one {
+  width: 400px;
   height: 300px;
+  padding-left: 50px;
   float: left;
-  padding-left: 100px;
-  padding-right: 100px;
 }
 
 .two {
+  width: 400px;
   height: 300px;
-  padding-left: 100px;
-  padding-right: 100px;
-  padding-top: 1px;
+  float: left;
+}
+
+.listaOtsikko{
+  padding-left: 160px;
+}
+
+.reseptit{
+  padding-left: 80px;
 }
 
 .input {
     width:100%;
     box-sizing: border-box;
+}
+
+.nimiKenttä {
+  width: 150px;
+}
+
+.aineksetKenttä{
+  width: 150px;
+  margin-right: 25px;
+}
+
+.aikaKenttä{
+  width: 50px;
+  margin-right: 185px;
+}
+
+.ohjeKenttä{
+  width: 150px; 
+}
+
+.tasoKenttä{
+  width: 50px;
+  margin-right: 150px;
+}
+
+.submitButton{
+  color: white;
+  margin-top: 20px;
+  font-size: 16px;
+  background-color: teal;
+  padding: 12px 28px;
+  border-color: teal;
+  border-radius: 8px;
+  transition-duration: 0.5s;
+}
+
+.submitButton:hover{
+  background-color: white;
+  color: black;
 }

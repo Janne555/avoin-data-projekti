@@ -1,4 +1,4 @@
-const { Todo, Contacts, Velka } = require('./database')
+const { Todo, Contacts, Velka, Resepti } = require('./database')
 const jwt_decode = require('jwt-decode');
 
 module.exports = function (app) {
@@ -185,7 +185,7 @@ module.exports = function (app) {
     }
   })
 
-  app.get("/resptit", async (req, res) => {
+  app.get("/reseptit", async (req, res) => {
     try {
       res.json(await Resepti.find({}));
     } catch {
