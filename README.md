@@ -1,5 +1,5 @@
 Projekti tehty yhdessä samalla koneella, jonka vuoksi git commiteissa ei näy kaikilta kontribuutioita
-
+```
 GET /contacts
 response:
 [
@@ -107,3 +107,4 @@ payload:
 }
 response:
 same as GET /reseptit
+```
